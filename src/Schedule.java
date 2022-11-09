@@ -5,7 +5,7 @@ import java.util.*;
 public class Schedule {
     public Map<Integer, Task> taskMap = new HashMap<>();
 
-    public void addtask(Task task) {
+    public void addtask(int i, Task task) {
         taskMap.put(task.getId(), task);
     }
 

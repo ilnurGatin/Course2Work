@@ -8,7 +8,7 @@ public class EverydayTask extends Task {
 
     @Override
     public boolean appearsIn(LocalDate date) {
-        if (getTaskDateTime().isBefore(date.atStartOfDay())) {
+        if (getTaskDateTime().isAfter(date.atStartOfDay())) {
             return true;
         } else {
             return false;
