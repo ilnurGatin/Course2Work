@@ -20,9 +20,6 @@ public abstract class Task {
             return typeOfTaskTitle;
         }
 
-        public void setTypeOfTaskTitle(String typeOfTaskTitle) {
-            this.typeOfTaskTitle = typeOfTaskTitle;
-        }
 
         public String getTypeOfTask() {
             return typeOfTaskTitle;
@@ -33,12 +30,12 @@ public abstract class Task {
 
     private LocalDateTime taskDateTime;
 
-    public Task(String title, String description, LocalDateTime taskDateTime, TypeOfTask typeOfTask) {
+    public Task(String title, String description, LocalDateTime taskDateTime) {
         this.id = counter++;
         this.title = title;
         this.description = description;
         this.taskDateTime = taskDateTime;
-        this.typeOfTask = typeOfTask;
+
     }
 
     public String getTitle() {

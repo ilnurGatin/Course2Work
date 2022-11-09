@@ -2,8 +2,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class EveryMonthTask extends Task {
-    public EveryMonthTask(String title, String description, LocalDateTime taskDateTime, TypeOfTask typeOfTask) {
-        super(title, description, taskDateTime, typeOfTask);
+    public EveryMonthTask(String title, String description, LocalDateTime taskDateTime) {
+        super(title, description, taskDateTime);
     }
 
     @Override

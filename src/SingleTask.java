@@ -2,8 +2,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SingleTask extends Task {
-    public SingleTask(String title, String description, LocalDateTime taskDateTime, TypeOfTask typeOfTask) {
-        super(title, description, taskDateTime, typeOfTask);
+    public SingleTask(String title, String description, LocalDateTime taskDateTime) {
+        super(title, description, taskDateTime);
     }
 
     @Override

@@ -1,11 +1,10 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Schedule {
     public Map<Integer, Task> taskMap = new HashMap<>();
 
-    public void addtask(Task task) {
+    public void addtask(int id, Task task) {
         taskMap.put(task.getId(), task);
     }
 
