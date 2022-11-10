@@ -72,11 +72,19 @@ public class Main {
         }
     }
 
-    private static void inputSingleTask(Scanner scanner, Schedule schedule) {
+    private static String inputTaskName(Scanner scanner) {
         System.out.print("Введите название задачи: ");
         String taskName = scanner.useDelimiter("\n").next();
+        return taskName;
+    }
+
+    private static String inputDescription(Scanner scanner) {
         System.out.print("Введите описание задачи: ");
         String taskDescription = scanner.useDelimiter("\n").next();
+        return taskDescription;
+    }
+
+    private static LocalDateTime inputDateTime(Scanner scanner) {
         System.out.print("Введите дату и время задачи в формате дд, мм, гггг чч:мм ");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd, MM, yyyy HH:mm");
         LocalDateTime taskDate = null;
@@ -85,7 +93,10 @@ public class Main {
         } catch (DateTimeParseException e) {
             System.out.println("Ошибка! Не верный формат даты");
         }
+        return taskDate;
+    }
 
+    private static Task.TypeOfTask inputTypeOfTask(Scanner scanner) {
         System.out.print("Введите тип задачи 'Личный' или 'Рабочий' ");
         String chosenTypeOfTask = scanner.next();
         Task.TypeOfTask typeOfTask = null;
@@ -94,116 +105,50 @@ public class Main {
         } else if (chosenTypeOfTask.equals("Рабочий")) {
             typeOfTask = Task.TypeOfTask.WORK;
         }
+        return typeOfTask;
+    }
 
-        Task task = new SingleTask(taskName, taskDescription, taskDate, typeOfTask);
-
+    private static void inputSingleTask(Scanner scanner, Schedule schedule) {
+        Task task = new SingleTask(
+                inputTaskName(scanner),
+                inputDescription(scanner),
+                inputDateTime(scanner),
+                inputTypeOfTask(scanner));
         schedule.addtask(task.getId(), task);
     }
     private static void inputEverydayTask(Scanner scanner, Schedule schedule) {
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.useDelimiter("\n").next();
-        System.out.print("Введите описание задачи: ");
-        String taskDescription = scanner.useDelimiter("\n").next();
-        System.out.print("Введите дату и время задачи в формате дд, мм, гггг чч:мм ");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd, MM, yyyy HH:mm");
-        LocalDateTime taskDate = null;
-        try {
-            taskDate = LocalDateTime.parse(scanner.useDelimiter("\n").next(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Ошибка! Не верный формат даты");
-        }
-
-        System.out.print("Введите тип задачи 'Личный' или 'Рабочий' ");
-        String chosenTypeOfTask = scanner.next();
-        Task.TypeOfTask typeOfTask = null;
-        if (chosenTypeOfTask.equals("Личный")) {
-            typeOfTask = Task.TypeOfTask.PERSONAL;
-        } else if (chosenTypeOfTask.equals("Рабочий")) {
-            typeOfTask = Task.TypeOfTask.WORK;
-        }
-
-        Task task = new EverydayTask(taskName, taskDescription, taskDate, typeOfTask);
+        Task task = new EverydayTask(
+                inputTaskName(scanner),
+                inputDescription(scanner),
+                inputDateTime(scanner),
+                inputTypeOfTask(scanner));
         schedule.addtask(task.getId(), task);
     }
 
     private static void inputEveryWeekTask(Scanner scanner, Schedule schedule) {
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.useDelimiter("\n").next();
-        System.out.print("Введите описание задачи: ");
-        String taskDescription = scanner.useDelimiter("\n").next();
-        System.out.print("Введите дату и время задачи в формате дд, мм, гггг чч:мм ");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd, MM, yyyy HH:mm");
-        LocalDateTime taskDate = null;
-        try {
-            taskDate = LocalDateTime.parse(scanner.useDelimiter("\n").next(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Ошибка! Не верный формат даты");
-        }
-
-        System.out.print("Введите тип задачи 'Личный' или 'Рабочий' ");
-        String chosenTypeOfTask = scanner.next();
-        Task.TypeOfTask typeOfTask = null;
-        if (chosenTypeOfTask.equals("Личный")) {
-            typeOfTask = Task.TypeOfTask.PERSONAL;
-        } else if (chosenTypeOfTask.equals("Рабочий")) {
-            typeOfTask = Task.TypeOfTask.WORK;
-        }
-
-        Task task = new EveryWeekTask(taskName, taskDescription, taskDate, typeOfTask);
+        Task task = new EveryWeekTask(
+                inputTaskName(scanner),
+                inputDescription(scanner),
+                inputDateTime(scanner),
+                inputTypeOfTask(scanner));
         schedule.addtask(task.getId(), task);
     }
 
     private static void inputEveryMonthTask(Scanner scanner, Schedule schedule) {
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.useDelimiter("\n").next();
-        System.out.print("Введите описание задачи: ");
-        String taskDescription = scanner.useDelimiter("\n").next();
-        System.out.print("Введите дату и время задачи в формате дд, мм, гггг чч:мм ");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd, MM, yyyy HH:mm");
-        LocalDateTime taskDate = null;
-        try {
-            taskDate = LocalDateTime.parse(scanner.useDelimiter("\n").next(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Ошибка! Не верный формат даты");
-        }
-
-        System.out.print("Введите тип задачи 'Личный' или 'Рабочий' ");
-        String chosenTypeOfTask = scanner.next();
-        Task.TypeOfTask typeOfTask = null;
-        if (chosenTypeOfTask.equals("Личный")) {
-            typeOfTask = Task.TypeOfTask.PERSONAL;
-        } else if (chosenTypeOfTask.equals("Рабочий")) {
-            typeOfTask = Task.TypeOfTask.WORK;
-        }
-
-        Task task = new EveryMonthTask(taskName, taskDescription, taskDate, typeOfTask);
+        Task task = new EveryMonthTask(
+                inputTaskName(scanner),
+                inputDescription(scanner),
+                inputDateTime(scanner),
+                inputTypeOfTask(scanner));
         schedule.addtask(task.getId(), task);
     }
 
     private static void inputEveryYearTask(Scanner scanner, Schedule schedule) {
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.useDelimiter("\n").next();
-        System.out.print("Введите описание задачи: ");
-        String taskDescription = scanner.useDelimiter("\n").next();
-        System.out.print("Введите дату и время задачи в формате дд, мм, гггг чч:мм ");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd, MM, yyyy HH:mm");
-        LocalDateTime taskDate = null;
-        try {
-            taskDate = LocalDateTime.parse(scanner.useDelimiter("\n").next(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Ошибка! Не верный формат даты");
-        }
-
-        System.out.print("Введите тип задачи 'Личный' или 'Рабочий' ");
-        String chosenTypeOfTask = scanner.next();
-        Task.TypeOfTask typeOfTask = null;
-        if (chosenTypeOfTask.equals("Личный")) {
-            typeOfTask = Task.TypeOfTask.PERSONAL;
-        } else if (chosenTypeOfTask.equals("Рабочий")) {
-            typeOfTask = Task.TypeOfTask.WORK;
-        }
-
-        Task task = new EverydayTask(taskName, taskDescription, taskDate, typeOfTask);
+        Task task = new EverydayTask(
+                inputTaskName(scanner),
+                inputDescription(scanner),
+                inputDateTime(scanner),
+                inputTypeOfTask(scanner));
         schedule.addtask(task.getId(), task);
     }
 
